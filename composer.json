@@ -1,0 +1,17 @@
+{
+    "name": "denis/mp-ecommerce-php-master",
+    "autoload": {
+        "psr-4": {
+            "Denis\\MpEcommercePhpMaster\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Denis Pujadas",
+            "email": "elbutifarra@gmail.com"
+        }
+    ],
+    "require": {
+        "mercadopago/dx-php": "^2.3"
+    }
+}
