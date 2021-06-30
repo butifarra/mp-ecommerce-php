@@ -1,87 +1,11 @@
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    
     <meta name="viewport" content="width=1024">
     <title>Tienda e-commerce</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="format-detection" content="telephone=no">
-    <script src="https://www.mercadopago.com/v2/security.js" ></script>
-        
-    <!-- Sumo la preferencia -->
-    <?php
-    // SDK de Mercado Pago
-    require __DIR__ .  '/vendor/autoload.php';
-    // Agrega credenciales
-    MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
-    //El id de desarrollador para el examen
-    MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
-    ?>
-           
-   <?php
-    // Crea un objeto de preferencia
-    $preference = new MercadoPago\Preference();
-
-    // Crea un ítem en la preferencia
-    $item = new MercadoPago\Item();
-    $item->title = $_POST['title'];
-    $item->quantity = 1;
-    $item->unit_price = $_POST['price'];
-    $preference->items = array($item);
-    
-    $preference->external_reference = 'elbutifarra@gmail.com';
-    $preference->notification_url = "https://babaef67987333f2d113f35d5ac07692.m.pipedream.net";
-    $preference->back_urls = array(
-        "success" => "https://butifarra-mp-ecommerce-php.herokuapp.com/success.php",
-        "failure" => "https://butifarra-mp-ecommerce-php.herokuapp.com/failure.php",
-        "pending" => "https://butifarra-mp-ecommerce-php.herokuapp.com/pending.php"
-    );
-    $preference->auto_return = "approved";
-    $preference->payment_methods = array(
-        "excluded_payment_methods" => array(
-          array("id" => "amex")
-        ),
-        "excluded_payment_types" => array(
-          array("id" => "atm")
-        ),
-        "installments" => 6
-      );
-      $preference->save();
-    ?>
-
-<?php
-  // Creo el pagador
-  $payer = new MercadoPago\Payer();
-  $payer->name = "Lalo";
-  $payer->surname = "Landa";
-  $payer->email = "test_user_63274575@testuser.com";
-  $payer->phone = array(
-    "area_code" => "11",
-    "number" => "22223333"
-  );
-  
-    
-  $payer->address = array(
-    "street_name" => "Falsa",
-    "street_number" => 123,
-    "zip_code" => "1111"
-  );
-  // ...
-?>
-<?php
-    //creo el pago
-  $item = new MercadoPago\Item();
-  $item->id = "1234";
-  $item->title = $_POST['title'];
-  $item->description = "Dispositivo móvil de Tienda e-commerce";
-  $item->category_id = "phones";
-  $item->quantity =1;
-  $item->currency_id = "PEN";
-  $item->unit_price = $_POST['price'];
-  // ...
-?>
-
-
 
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -206,20 +130,7 @@
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <!--
-                                    Este código de abajo viene en el ejemplo, pero no se pone así según la documentación el botón.
-                                    Además, para que esto ande tiene que haber un FORM y no hay.
-                                    Entonces, como dice el script de abajo, el botón aparecerá donde yo ponga el div de clase
-                                    cho-container, en cualquier lado que ponga el div, aparecerá el botón.
                                     <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
-                                     -->
-                                    <div class="cho-container">
-                                    
-                                    </div>
-                                    <!-- Ahora que aprendí esto debo cambiar el botón para usar redirect-->
-                                    
-
-
                                 </div>
                             </div>
                         </div>
@@ -237,24 +148,3 @@
         </div>
 
 </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div class="mp-mercadopago-checkout-wrapper" style="z-index:-2147483647;display:block;background:rgba(0, 0, 0, 0.7);border:0;overflow:hidden;visibility:hidden;margin:0;padding:0;position:fixed;left:0;top:0;width:0;opacity:0;height:0;transition:opacity 220ms ease-in;"> <svg class="mp-spinner" viewBox="25 25 50 50"> <circle class="mp-spinner-path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"></circle> </svg> </div><div id="ac-gn-viewport-emitter"> </div></body></html>
-
-<!--// SDK MercadoPago.js V2-->
-<script src="https://sdk.mercadopago.com/js/v2"></script>
-
-<script>
-// Agrega credenciales de SDK
-  const mp = new MercadoPago('APP_USR-7eb0138a-189f-4bec-87d1-c0504ead5626', {
-        locale: 'es-UY'
-  });
-
-  // Inicializa el checkout
-  mp.checkout({
-      preference: {
-        id: '<?=$preference->id?>'
-      },
-      render: {
-            container: '.cho-container', // Indica dónde se mostrará el botón de pago
-            label: 'Pagar la compra', // Cambia el texto del botón de pago (opcional)
-      }
-});
-</script>

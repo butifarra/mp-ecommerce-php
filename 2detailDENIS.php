@@ -17,33 +17,13 @@
     //El id de desarrollador para el examen
     MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
     ?>
-        <?php
-  // Creo el pagador
-  $payer = new MercadoPago\Payer();
-  $payer->name = "Lalo";
-  $payer->surname = "Landa";
-  $payer->email = "test_user_63274575@testuser.com";
-  $payer->phone = array(
-    "area_code" => "11",
-    "number" => "22223333"
-  );
-  
-    
-  $payer->address = array(
-    "street_name" => "Falsa",
-    "street_number" => 123,
-    "zip_code" => "1111"
-  );
-  // ...
-?>   
+           
    <?php
     // Crea un objeto de preferencia
     $preference = new MercadoPago\Preference();
-    $preference->payer = $payer; 
+
     // Crea un ítem en la preferencia
     $item = new MercadoPago\Item();
-    $item->title = $_POST['title'];
-    $item->quantity = 1;
     $item->unit_price = $_POST['price'];
     $item->id = "1234";
     $item->title = $_POST['title'];
@@ -51,7 +31,9 @@
     $item->picture_url ="https://butifarra-mp-ecommerce-php.herokuapp.com" .substr($_POST['img'],1);
     $item->category_id = "phones";
     $item->quantity =1;
-    
+    $item->currency_id = "UYU";
+    $item->unit_price = $_POST['price'];
+    // ...
     $preference->items = array($item);
     
     $preference->external_reference = 'elbutifarra@gmail.com';
@@ -72,24 +54,24 @@
         "installments" => 6
       );
       $preference->save();
-      $url = $preference->init_point;            
-    //header("Location: $url");
+      // Creo el pagador
+  $payer = new MercadoPago\Payer();
+  $payer->name = "Lalo";
+  $payer->surname = "Landa";
+  $payer->email = "test_user_63274575@testuser.com";
+  $payer->phone = array(
+    "area_code" => "11",
+    "number" => "22223333"
+  );
+  
+    
+  $payer->address = array(
+    "street_name" => "Falsa",
+    "street_number" => 123,
+    "zip_code" => "1111"
+  );
+  // ...
     ?>
-
-
-<?php
-    /*/creo el pago
-    $item = new MercadoPago\Item();
-    $item->id = "1234";
-    $item->title = $_POST['title'];
-    $item->description = "Dispositivo móvil de Tienda e-commerce";
-    $item->picture_url ="https://butifarra-mp-ecommerce-php.herokuapp.com" .substr($_POST['img'],1);
-    $item->category_id = "phones";
-    $item->quantity =1;
-    $item->currency_id = "UYU";
-    $item->unit_price = $_POST['price'];
-  // ...*/
-?>
 
 
 
@@ -223,20 +205,9 @@
                                     cho-container, en cualquier lado que ponga el div, aparecerá el botón.
                                     <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
                                      -->
+                                    <div class="cho-container">
                                     
-                                    <!--<div class="cho-container"> No uso el DIV en el que el botón se pone automáticamente, sino este vínculo para que se pueda usar
-                                    el redirect y el autoreturn.
-                                    
-                                    </div> -->
-                                    <!doctype html>
-                                    <html>
-                                    <head>
-                                        <title>Pagar</title>
-                                    </head>
-                                    <body>
-                                        <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
-                                    </body>
-                                    </html>
+                                    </div>
                                     <!-- Ahora que aprendí esto debo cambiar el botón para usar redirect-->
                                     
 
