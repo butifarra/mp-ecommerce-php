@@ -10,7 +10,7 @@
     $event_json = json_decode($input);
     file_put_contents("denis.json",$event_json);
     
-    // API URL
+    /* 
 
 $url='https://butifarra-mp-ecommerce-php.herokuapp.com/prueba.php';
 
@@ -34,6 +34,7 @@ $result = curl_exec($ch);
 curl_close($ch);
 
     header('Location: https://butifarra-mp-ecommerce-php.herokuapp.com/prueba.php');
+    */
 
     
           $file = fopen(__DIR__ . '/denis.json','w');
@@ -54,3 +55,4 @@ curl_close($ch);
             $plan = MercadoPago\Invoice.find_by_id($_POST["id"]);
             break;
     }
+//curl https://api.mercadopago.com/v1/payments/15603808803?access_token=APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398

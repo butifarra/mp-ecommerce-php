@@ -30,11 +30,11 @@
     $preference->items = array($item);
     
     $preference->external_reference = 'elbutifarra@gmail.com';
-    $preference->notification_url = "https://butifarra-mp-ecommerce-php.herokuapp.com/webhook.php";
+    $preference->notification_url = "https://babaef67987333f2d113f35d5ac07692.m.pipedream.net";
     $preference->back_urls = array(
-        "success" => "/mp-ecommerce-php-master/success.php",
-        "failure" => "https://localhost/mp-ecommerce-php-master/failure.php",
-        "pending" => "https://localhost/mp-ecommerce-php-master/pending.php"
+        "success" => "https://butifarra-mp-ecommerce-php.herokuapp.com/success.php",
+        "failure" => "https://butifarra-mp-ecommerce-php.herokuapp.com/failure.php",
+        "pending" => "https://butifarra-mp-ecommerce-php.herokuapp.com/pending.php"
     );
     $preference->auto_return = "approved";
     $preference->payment_methods = array(
