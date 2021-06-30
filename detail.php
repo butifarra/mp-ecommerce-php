@@ -130,10 +130,7 @@
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    
-                                    <!--<form action="pagar.php"> -->
                                     <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
-                                    <!--</form> -->
                                 </div>
                             </div>
                         </div>

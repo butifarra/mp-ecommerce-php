@@ -28,12 +28,13 @@
     $item->quantity = 1;
     $item->unit_price = $_POST['price'];
     $preference->items = array($item);
-    $preference->save();
+    
     $preference->external_reference = 'elbutifarra@gmail.com';
+    $preference->notification_url = "https://butifarra-mp-ecommerce-php.herokuapp.com/webhook.php";
     $preference->back_urls = array(
-        "success" => "https://localhost/mp-ecommerce-php-master/success.php",
-        "failure" => "http://www.tu-sitio/failure",
-        "pending" => "http://www.tu-sitio/pending"
+        "success" => "/mp-ecommerce-php-master/success.php",
+        "failure" => "https://localhost/mp-ecommerce-php-master/failure.php",
+        "pending" => "https://localhost/mp-ecommerce-php-master/pending.php"
     );
     $preference->auto_return = "approved";
     $preference->payment_methods = array(
@@ -45,6 +46,7 @@
         ),
         "installments" => 6
       );
+      $preference->save();
     ?>
 
 <?php
